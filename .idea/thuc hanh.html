@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea</title>
+</head>
+<style>
+textarea {
+width: 500px;
+height: 150px;
+font-size: 18px;
+}
+body {
+background: linear-gradient(135deg, #667eea, #764ba2);
+font-family: Arial;
+color: white;
+}
+.box {
+width: 520px;
+background: rgba(255,255,255,0.2);
+padding: 20px;
+border-radius: 12px;
+text-align: center;
+}
+table {
+margin: auto;
+border-collapse: collapse;
+}
+td {
+width: 40px;
+height: 40px;
+border: 1px solid white;
+font-size: 20px;
+cursor: pointer;
+text-align: center;
+}
+</style>
+<body>
+<div class="box">
+    <h3>Type anything slowly <3 </h3>
+    <textarea id="lie" oninput="lietext()"></textarea>
+
+</div>
+<script>
+let text="Bạn thật là giống một con mèo ! =))"
+function lietext() {
+    let funy = document.getElementById("lie");
+    let jun = funy.value.length;
+
+    if (funy >text.length){
+        funy.value="";
+        return;
+
+    }
+    funy.value = text.substring(0, jun);
+
+
+}
+</script>
+</body>
+</html>

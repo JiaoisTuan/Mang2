@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea</title>
+    <style>
+        textarea {
+            width: 400px;
+            height: 150px;
+            font-size: 18px;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: Arial;
+            color: white;
+        }
+        .box {
+            width: 520px;
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid white;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+<h2>Type anything slowly</h2>
+
+<textarea id="fake" oninput="fakeTyping()"></textarea>
+</div>
+<script>
+        let text = "Tôi thật sự ngu ngốc ";
+
+    function fakeTyping() {
+        let textarea = document.getElementById("fake");
+
+        let len = textarea.value.length;
+
+        // nếu gõ quá độ dài → reset
+        if (len > text.length) {
+            textarea.value = "";
+            return;
+        }
+
+        // cắt chuỗi theo số ký tự đã gõ
+        textarea.value = text.substring(0, len);
+    }
+</script>
+
+</body>
+</html>
