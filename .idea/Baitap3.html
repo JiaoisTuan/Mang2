@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi hoa thường chuẩn Unicode</title>
+</head>
+<body>
+
+<h3>Đổi hoa ↔ thường (chuẩn tiếng Việt)</h3>
+
+<input type="text" id="inputText" placeholder="Nhập chuỗi">
+<button onclick="convert()">Chuyển đổi</button>
+
+<p>Kết quả:</p>
+<p id="result"></p>
+
+<script>
+    function convert() {
+        let input = document.getElementById("inputText").value;
+        let output = "";
+        let needUpper = true;
+
+        for (let i = 0; i < input.length; i++) {
+            let ch = input[i];
+
+            // nếu là chữ cái (kể cả có dấu)
+            if (ch.toUpperCase() !== ch.toLowerCase()) {
+
+                if (needUpper) {
+                    output += ch.toUpperCase();
+                    needUpper = false;
+                } else {
+                    if (ch === ch.toUpperCase()) {
+                        output += ch.toLowerCase();
+                    } else {
+                        output += ch.toUpperCase();
+                    }
+                }
+
+            } else {
+                output += ch;
+                if (ch === '.') {
+                    needUpper = true;
+                }
+            }
+        }
+
+        document.getElementById("result").innerText = output;
+    }
+</script>
+
+</body>
+</html>
