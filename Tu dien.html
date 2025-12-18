@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English - Vietnamese Dictionary</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-family: Arial;
+        }
+        .box {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h3>Chương trình dịch ngôn ngữ Anh ↔ Việt</h3>
+
+    <input type="text" id="inputtext" placeholder="Nhập từ cần dịch">
+    <button onclick="convert()">Chuyển đổi</button>
+
+    <p>Dịch:</p>
+    <p id="result"></p>
+</div>
+
+<script>
+    function convert() {
+        let English = ["hello", "world", "fun", "happy", "i love you"];
+        let Vietnamese = ["xin chào", "thế giới", "vui vẻ", "hạnh phúc", "tôi yêu bạn"];
+
+        let input = document.getElementById("inputtext").value.toLowerCase().trim();
+        let result = document.getElementById("result");
+
+        let found = false;
+
+        // Tìm Anh → Việt
+        for (let i = 0; i < English.length; i++) {
+            if (input === English[i]) {
+                result.innerText = Vietnamese[i];
+                found = true;
+                break;
+            }
+        }
+
+        // Nếu không tìm thấy thì tìm Việt → Anh
+        if (!found) {
+            for (let i = 0; i < Vietnamese.length; i++) {
+                if (input === Vietnamese[i]) {
+                    result.innerText = English[i];
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        // Không tìm thấy ở cả hai
+        if (!found) {
+            result.innerText = "Không tìm thấy";
+        }
+    }
+</script>
+
+</body>
+</html>
